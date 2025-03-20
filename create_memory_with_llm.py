@@ -38,7 +38,7 @@ Context: {context}
 Please provide the answer directly.
 """
 
-def set_custom_prompt(cutom_prompt_template):
+def set_custom_prompt(custom_prompt_template):
     prompt = ChatPromptTemplate.from_messages(
     [
         ("system", custom_prompt_template),
@@ -60,5 +60,6 @@ chain = create_retrieval_chain(retriever, question_answer_chain)
 
 # Query the chain
 query = input("Enter your query: ")
-reponse = chain.invoke({"input": query})
-print("Result: ", reponse['answer'])
+response = chain.invoke({"input": query})
+print("Result: ", response['answer'])
+print("Source: ", response['source'])
